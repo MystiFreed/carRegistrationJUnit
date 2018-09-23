@@ -1,5 +1,9 @@
 package testpackage;
 
+//This program will test the RegistrationLogic class in combination with the TestRunner class
+//Mysti Freed, mrfreed@dmacc.edu
+//9/22/2018
+
 import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.Result;
