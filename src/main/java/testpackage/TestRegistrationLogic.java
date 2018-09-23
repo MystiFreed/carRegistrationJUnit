@@ -1,6 +1,6 @@
 package testpackage;
 
-// This program will test the RegistrationLogic class in combination with the TestRunner class
+// This program will test the RegistrationLogic class in combination with the TestRunner class for RegistrationLogic
 // Mysti Freed, mrfreed@dmacc.edu
 // 9/22/2018
 
