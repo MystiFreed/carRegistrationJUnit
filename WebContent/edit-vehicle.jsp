@@ -8,7 +8,7 @@
 <title>Vehicle Edit</title>
 </head>
 <body>
-	<form action = "editVehicleServlet" method="post">
+	<form action = "registrationEditorServlet" method="post">
 	Vehicle Information:<br />
 	Make: <input type ="text" name = "make" value="${vehToEdit.make}">
 	Model: <input type = "text" name = "model" value= "${vehToEdit.model}">

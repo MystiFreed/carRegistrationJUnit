@@ -50,19 +50,13 @@ public class editVehicleServlet extends HttpServlet {
 				rh.deleteOwner(ownerToDelete);
 				getServletContext().getRequestDispatcher("/viewAllVehiclesServlet").forward(request, response);
 			} else if (act.equals("Edit Selected Vehicle")) {
-				//String make = request.getParameter("make");
-				//String model = request.getParameter("model");
+				
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				AutoInfo vehToEdit = rh.searchByIDAuto(tempId);
-				//vehToEdit.setMake(make);
-				//vehToEdit.setModel(model);
-				//OwnerInfo ownerToEdit = rh.searchByIDOwner(tempId);
+				OwnerInfo ownerToEdit = rh.searchByIDOwner(tempId);
 				request.setAttribute("vehToEdit", vehToEdit);
-				//request.setAttribute("ownerToEdit", ownerToEdit);
+				request.setAttribute("ownerToEdit", ownerToEdit);
 				getServletContext().getRequestDispatcher("/edit-vehicle.jsp").forward(request, response);
-			} /*else if (act.equals("Add New Item")) {
-			getServletContext().getRequestDispatcher("/addItem.html").forward
-			(request, response);*/
+			} 
 			}
-		//doGet(request, response);
 	}
