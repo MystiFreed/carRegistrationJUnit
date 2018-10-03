@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Vehicle Information</title>
+</head>
+<body>
+	Please enter the vehicle's make, model, year and VIN number in the fields and select "Enter corresponding Owner Information"<br />
+	after selecting "submit". <br />
+	<br />
+	<form action = "addAutoServlet" method="post">
+	<p>
+		<label for="make">Make-- </label>
+		<input name="make" type="text">
+	</p>
+	<p>
+		<label for="model">Model-</label>
+		<input name="model" type ="text">
+	</p>
+	<p>
+		<label for="year">Year--- </label>
+		<input name="year" type ="text">
+	</p>
+	<p>
+		<label for="vin">VIN#--  </label>
+		<input name="vin" type="text">
+	</p>
+	<input type = "submit" value="Add Vehicle">
+	</form>
+	<br />
+	<br />
+	<font face ="fantasy" size="4"> 
+	----->
+	<a href ="addOwnerInfo.html">Enter corresponding Owner Information</a><br />	
+	<a href ="index.html">Back to Entry Screen</a><br />
+	</font>
+</body>
+</html>

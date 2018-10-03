@@ -1,11 +1,9 @@
-
-package model;
-
-
 // This class verifies the following data elements meet the requirements -
 // vin = all digits; year is 4 digits; firstName and lastName are both > 3 characters
 // Mysti Freed, mrfreed@dmacc.edu
-// 9/21/2018
+// 10/2/2018
+
+package model;
 
 public class RegistrationLogic {
 	
@@ -66,5 +64,4 @@ public class RegistrationLogic {
 		}
 		return moreThan;
 	}
-
 }
