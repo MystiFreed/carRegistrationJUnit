@@ -1,12 +1,27 @@
+// This is the annotated entity for the WebCarRegistration project, owner_info table
+// Mysti Freed, mrfreed@dmacc.edu
+// 10/2/2018
+
 package model;
 
-//This program captures the owner information for the registration process
-//Mysti Freed, mrfreed@dmacc.edu
-//9/21/2018
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="owner_info")
 public class OwnerInfo {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID")
+	private int id; //auto-incremented identifier for the owner
+	@Column(name="FIRST")
 	private String firstName; // first name of the owner
+	@Column(name="LAST")
 	private String lastName; // last name of the owner
 	
 	/**
@@ -23,6 +38,22 @@ public class OwnerInfo {
 	public OwnerInfo(String f, String l) {
 		this.firstName = f;
 		this.lastName = l;
+	}
+	
+	/**
+	 * get method for the int variable ID
+	 * @return int
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * set method for the int variable ID
+	 * @param id
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
