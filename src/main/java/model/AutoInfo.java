@@ -4,11 +4,23 @@
 
 package model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -29,6 +41,17 @@ public class AutoInfo {
 	@Column(name="VIN")
 	private String vin; // vin number for the auto to be registered
 	
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<OwnerInfo> owners = new HashSet<OwnerInfo>();
+	
+	public Set<OwnerInfo> getOwners() {
+		return owners;
+	}
+	
+	public void setOwners(Set<OwnerInfo> owners) {
+		this.owners = owners;
+	}
+
 	/**
 	 * default constructor for the AutoInfo class
 	 */
@@ -149,6 +172,10 @@ public class AutoInfo {
 	 */
 	@Override
 	public String toString() {
-		return "AutoInfo [make=" + make + ", model=" + model + ", year=" + year + ", vin=" + vin + "]";
+		return "AutoInfo [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", vin=" + vin
+				+ ", owners=" + owners + "]";
 	}
+
+	
+	
 }
