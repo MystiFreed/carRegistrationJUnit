@@ -20,6 +20,13 @@ public class RegistrationHelper {
 
 	static EntityManagerFactory registrationfactory = Persistence.createEntityManagerFactory("WebCarRegistration");
 	
+	public void updateCombinedTable() {
+		EntityManager em = registrationfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(em);
+		em.getTransaction().commit();
+		em.close();
+	}
 	/**
 	 * This method closes down the EntityManager after the program is run
 	 */

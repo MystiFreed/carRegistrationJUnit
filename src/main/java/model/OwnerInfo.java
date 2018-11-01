@@ -4,11 +4,23 @@
 
 package model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,12 +36,17 @@ public class OwnerInfo {
 	@Column(name="LAST")
 	private String lastName; // last name of the owner
 	
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="AUTOINFO_OWNERINFO", joinColumns=@JoinColumn(name="AUTOINFO_ID", referencedColumnName="AUTOINFO_ID"), inverseJoinColumns=@JoinColumn(name="OWNERINFO_ID", referencedColumnName="OWNERINFO_ID"))
+	private Set<AutoInfo> autos = new HashSet<AutoInfo>();
+	
 	/**
 	 * default constructor for the OwnerInfo class
 	 */
 	public OwnerInfo() {
 	}
 	
+
 	/**
 	 * constructor for the OwnerInfo class
 	 * @param f = firstName
@@ -38,6 +55,14 @@ public class OwnerInfo {
 	public OwnerInfo(String f, String l) {
 		this.firstName = f;
 		this.lastName = l;
+	}
+	
+	public Set<AutoInfo> getAutos() {
+		return autos;
+	}
+	
+	public void setAutos(Set<AutoInfo> autos) {
+		this.autos = autos;
 	}
 	
 	/**
@@ -95,7 +120,6 @@ public class OwnerInfo {
 	public String toString() {
 		return "OwnerInfo [firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
-	
-	
+
 
 }
