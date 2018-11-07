@@ -65,7 +65,7 @@ public class RegistrationHelper {
 		//rj.setProperty(AUTO_ID, ai.getId()); //SET PROPERTY?? VS PERSIST?
 		//rj.setProperty(OWNER_ID, oi.getId());
 		RegistrationJunction specificMatch = new RegistrationJunction(ai, oi);
-		rj.persist(specificMatch);
+		rj.persist(specificMatch); // rollback exception?
 		rj.getTransaction().commit();
 		rj.close();
 	}
