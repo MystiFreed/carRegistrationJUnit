@@ -34,8 +34,8 @@ public class RegistrationJunction {
 	}
 	
 	public RegistrationJunction(AutoInfo aId, OwnerInfo oId) {
-		this.auto = aId;
-		this.owner = oId;
+		this.auto = aId; //set foreign key auto
+		this.owner = oId; //set foreign key owner
 	}
 	public int getId() {
 		return id;

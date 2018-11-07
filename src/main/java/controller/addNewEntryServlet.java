@@ -36,14 +36,14 @@ public class addNewEntryServlet extends HttpServlet {
 		String model = request.getParameter("model");
 		String year = request.getParameter("year");
 		String vin = request.getParameter("vin");
-		AutoInfo vehicle = new AutoInfo(make, model, year, vin);
+		AutoInfo vehicle = new AutoInfo(make, model, year, vin); // set auto first
 		rh.addVehicle(vehicle);
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
-		OwnerInfo owner = new OwnerInfo(firstName, lastName);
+		OwnerInfo owner = new OwnerInfo(firstName, lastName); // set owner second
 		rh.addOwner(owner);
 		
-		rh.setJunctionID(vehicle, owner);
+		rh.setJunctionID(vehicle, owner); // set the junction id primary key and foreign keys
 		getServletContext().getRequestDispatcher("/addNewEntry.html").forward(request, response);
 	}
 
