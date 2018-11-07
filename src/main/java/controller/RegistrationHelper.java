@@ -14,6 +14,7 @@ import javax.persistence.TypedQuery;
 
 import model.AutoInfo;
 import model.OwnerInfo;
+import model.RegistrationJunction;
 
 
 public class RegistrationHelper {
@@ -56,6 +57,17 @@ public class RegistrationHelper {
 		of.persist(oi);
 		of.getTransaction().commit();
 		of.close();
+	}
+	
+	public void setJunctionID(AutoInfo ai, OwnerInfo oi) {
+		EntityManager rj = registrationfactory.createEntityManager();
+		rj.getTransaction().begin();
+		//rj.setProperty(AUTO_ID, ai.getId()); //SET PROPERTY?? VS PERSIST?
+		//rj.setProperty(OWNER_ID, oi.getId());
+		RegistrationJunction specificMatch = new RegistrationJunction(ai, oi);
+		rj.persist(specificMatch);
+		rj.getTransaction().commit();
+		rj.close();
 	}
 	
 	/**

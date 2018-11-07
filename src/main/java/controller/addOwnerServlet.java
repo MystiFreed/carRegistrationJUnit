@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.OwnerInfo;
+import model.RegistrationJunction;
 
 /**
  * Servlet implementation class addOwnerServlet
@@ -35,8 +36,10 @@ public class addOwnerServlet extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		OwnerInfo owner = new OwnerInfo(firstName, lastName);
+		RegistrationJunction junctionID = new RegistrationJunction();
 		RegistrationHelper rh = new RegistrationHelper();
 		rh.addOwner(owner);
-		getServletContext().getRequestDispatcher("/addOwnerInfo.html").forward(request, response);
+		rh.setJunctionID(junctionID);
+		getServletContext().getRequestDispatcher("/addNewEntry.html").forward(request, response);
 	}
 }

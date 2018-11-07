@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Information</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+$(document).ready(function (){
+	$("#Add Vehicle").submit();
+	$("#Add Owner").submit();
+});
+</script>
+</head>
+<body>
+	Please enter the vehicle's make, model, year and VIN number in the fields, followed by the corresponding owner information.<br />
+	After entry is complete, click "submit". <br />
+	<br />
+	<form action = "addNewEntryServlet" method="post">
+	<p>
+		<label for="make">Make-- </label>
+		<input name="make" type="text">
+	</p>
+	<p>
+		<label for="model">Model-</label>
+		<input name="model" type ="text">
+	</p>
+	<p>
+		<label for="year">Year--- </label>
+		<input name="year" type ="text">
+	</p>
+	<p>
+		<label for="vin">VIN#--  </label>
+		<input name="vin" type="text">
+	</p>
+	<p>
+		<label for="firstName">First Name-</label>
+		<input name="firstName" type="text">
+	</p>
+	<p>
+		<label for="lastName">Last Name-</label>
+		<input name="lastName" type="text">
+	<input type = "submit" value = "Add New Registration">
+	</form>
+	<br />
+	<br />
+	<font face ="fantasy" size="4"> 
+	----->
+	<a href ="addOwnerInfo.html">Enter corresponding Owner Information</a><br />	
+	<a href ="index.html">Back to Entry Screen</a><br />
+	</font>
+	Please enter the owner's first and last names in the fields and select "Back to Entry Screen"<br />
+	after selecting "submit". <br />
+	<br />
+	<br />
+	<br />
+	<font face ="fantasy" size="4"> 
+	<a href ="index.html">Back to Entry Screen</a><br />
+	</font>
+</body>
+</html>
