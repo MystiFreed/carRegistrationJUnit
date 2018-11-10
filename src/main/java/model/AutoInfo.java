@@ -21,6 +21,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 
@@ -30,7 +31,7 @@ public class AutoInfo {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name="AUTO_ID")
 	private int id; //auto-incremented identifier for the vehicle
 	@Column(name="MAKE")
 	private String make; // make of auto to be registered
@@ -41,16 +42,9 @@ public class AutoInfo {
 	@Column(name="VIN")
 	private String vin; // vin number for the auto to be registered
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<OwnerInfo> owners = new HashSet<OwnerInfo>();
-	
-	public Set<OwnerInfo> getOwners() {
-		return owners;
-	}
-	
-	public void setOwners(Set<OwnerInfo> owners) {
-		this.owners = owners;
-	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn(name = "auto_id")
+	private OwnerInfo owner;
 
 	/**
 	 * default constructor for the AutoInfo class
@@ -72,6 +66,7 @@ public class AutoInfo {
 		this.vin = v;
 	}
 
+	
 	/**
 	 * Constructor for the delete method
 	 * @param v = vin number
@@ -80,6 +75,15 @@ public class AutoInfo {
 		this.vin = v;
 	}
 	
+
+	public OwnerInfo getOwner() {
+		return owner;
+	}
+
+	public void setOwner(OwnerInfo owner) {
+		this.owner = owner;
+	}
+
 	/**
 	 * get method for the int variable ID
 	 * @return int
@@ -173,7 +177,7 @@ public class AutoInfo {
 	@Override
 	public String toString() {
 		return "AutoInfo [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", vin=" + vin
-				+ ", owners=" + owners + "]";
+				+ " ]";
 	}
 
 	

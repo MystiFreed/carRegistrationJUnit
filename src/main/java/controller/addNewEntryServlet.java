@@ -42,8 +42,9 @@ public class addNewEntryServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		OwnerInfo owner = new OwnerInfo(firstName, lastName); // set owner second
 		rh.addOwner(owner);
+		rh.addAuto()
 		
-		rh.setJunctionID(vehicle, owner); // set the junction id primary key and foreign keys
+		//rh.setJunctionID(vehicle, owner); // set the junction id primary key and foreign keys
 		getServletContext().getRequestDispatcher("/addNewEntry.html").forward(request, response);
 	}
 

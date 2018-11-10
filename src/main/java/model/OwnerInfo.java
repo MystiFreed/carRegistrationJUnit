@@ -21,6 +21,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,16 +30,15 @@ public class OwnerInfo {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name="OWNER_ID")
 	private int id; //auto-incremented identifier for the owner
 	@Column(name="FIRST")
 	private String firstName; // first name of the owner
 	@Column(name="LAST")
 	private String lastName; // last name of the owner
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name="AUTOINFO_OWNERINFO", joinColumns=@JoinColumn(name="AUTOINFO_ID", referencedColumnName="AUTOINFO_ID"), inverseJoinColumns=@JoinColumn(name="OWNERINFO_ID", referencedColumnName="OWNERINFO_ID"))
-	private Set<AutoInfo> autos = new HashSet<AutoInfo>();
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	private List<AutoInfo> autos = new ArrayList<AutoInfo>();
 	
 	/**
 	 * default constructor for the OwnerInfo class
@@ -47,6 +47,10 @@ public class OwnerInfo {
 	}
 	
 
+	public void addAuto(AutoInfo auto) {
+		auto.setOwner(this);
+		autos.add(auto);
+	}
 	/**
 	 * constructor for the OwnerInfo class
 	 * @param f = firstName
@@ -57,14 +61,17 @@ public class OwnerInfo {
 		this.lastName = l;
 	}
 	
-	public Set<AutoInfo> getAutos() {
+	
+	public List<AutoInfo> getAutos() {
 		return autos;
 	}
-	
-	public void setAutos(Set<AutoInfo> autos) {
+
+
+	public void setAutos(List<AutoInfo> autos) {
 		this.autos = autos;
 	}
-	
+
+
 	/**
 	 * get method for the int variable ID
 	 * @return int

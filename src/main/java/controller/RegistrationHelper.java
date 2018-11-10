@@ -54,12 +54,14 @@ public class RegistrationHelper {
 	public void addOwner(OwnerInfo oi) {
 		EntityManager of = registrationfactory.createEntityManager();
 		of.getTransaction().begin();
+		//AutoInfo auto = new AutoInfo(ai);
+		//of.persist(specificMatch);
 		of.persist(oi);
 		of.getTransaction().commit();
 		of.close();
 	}
 	
-	public void setJunctionID(AutoInfo ai, OwnerInfo oi) {
+	/*public void setJunctionID(AutoInfo ai, OwnerInfo oi) {
 		EntityManager rj = registrationfactory.createEntityManager();
 		rj.getTransaction().begin();
 		//rj.setProperty(AUTO_ID, ai.getId()); //SET PROPERTY?? VS PERSIST?
@@ -68,7 +70,7 @@ public class RegistrationHelper {
 		rj.persist(specificMatch); // rollback exception?
 		rj.getTransaction().commit();
 		rj.close();
-	}
+	}*/
 	
 	/**
 	 * This method is used to dispay all the vehicles in the database
